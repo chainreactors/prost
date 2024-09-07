@@ -139,7 +139,7 @@
 use std::io::Result;
 use std::path::Path;
 
-use prost_types::FileDescriptorSet;
+pub use prost_types::{FileDescriptorProto, FileDescriptorSet};
 
 mod ast;
 pub use crate::ast::{Comments, Method, Service};
@@ -264,7 +264,7 @@ pub fn compile_protos(protos: &[impl AsRef<Path>], includes: &[impl AsRef<Path>]
 ///
 /// # Example
 /// ```rust,no_run
-/// # use prost_types::FileDescriptorSet;
+/// # use prost_build::FileDescriptorSet;
 /// # fn fds() -> FileDescriptorSet { todo!() }
 /// fn main() -> std::io::Result<()> {
 ///   let file_descriptor_set = fds();

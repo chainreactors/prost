@@ -570,7 +570,7 @@ impl Config {
     ///
     /// ```rust,ignore
     /// let file_descriptor_set_bytes = include_bytes!(concat!(env!("OUT_DIR"), "/file_descriptor_set.bin"));
-    /// let file_descriptor_set = prost_types::FileDescriptorSet::decode(&file_descriptor_set_bytes[..]).unwrap();
+    /// let file_descriptor_set = prost_build::FileDescriptorSet::decode(&file_descriptor_set_bytes[..]).unwrap();
     /// ```
     pub fn file_descriptor_set_path<P>(&mut self, path: P) -> &mut Self
     where
@@ -781,7 +781,7 @@ impl Config {
     /// # Example `build.rs`
     ///
     /// ```rust,no_run
-    /// # use prost_types::FileDescriptorSet;
+    /// # use prost_build::FileDescriptorSet;
     /// # fn fds() -> FileDescriptorSet { todo!() }
     /// fn main() -> std::io::Result<()> {
     ///   let file_descriptor_set = fds();
@@ -859,8 +859,7 @@ impl Config {
     /// # Example `build.rs`
     ///
     /// ```rust,no_run
-    /// # use prost_types::FileDescriptorSet;
-    /// # use prost_build::Config;
+    /// # use prost_build::{Config, FileDescriptorSet};
     /// fn main() -> std::io::Result<()> {
     ///   let mut config = Config::new();
     ///   let file_descriptor_set = config.load_fds(&["src/frontend.proto", "src/backend.proto"], &["src"])?;
